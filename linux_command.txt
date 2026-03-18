@@ -1,3 +1,47 @@
+echo "=== OS ==="
+lsb_release -a 2>/dev/null || cat /etc/os-release
+uname -m
+
+echo
+echo "=== Qt ==="
+~/Qt/6.8.3/gcc_64/bin/qtpaths --qt-version 2>/dev/null || true
+~/Qt/6.8.3/android_arm64_v8a/bin/qt-cmake --version 2>/dev/null | head -n 1
+
+echo
+echo "=== CMake / Ninja ==="
+cmake --version | head -n 1
+~/Qt/Tools/CMake/bin/cmake --version | head -n 1
+ninja --version
+
+echo
+echo "=== Java ==="
+java -version
+javac -version
+
+echo
+echo "=== Android SDK / NDK ==="
+ls -1 ~/Android/Sdk/platforms 2>/dev/null | tail
+ls -1 ~/Android/Sdk/build-tools 2>/dev/null | tail
+ls -1 ~/Android/Sdk/ndk 2>/dev/null | tail
+~/Android/Sdk/platform-tools/adb version
+
+echo
+echo "=== QGC repo ==="
+cd ~/Downloads/qgroundcontrol
+git describe --tags --always
+git rev-parse HEAD
+grep -n "GIT_TAG" src/GPS/CMakeLists.txt
+
+echo
+echo "=== usb-serial AAR hash ==="
+sha256sum android/libs/usb-serial-for-android-3.8.1.aar 2>/dev/null || echo "No local AAR"
+
+echo
+echo "=== build.gradle usb serial lines ==="
+grep -n "usb-serial-for-android" android/build.gradle || true
+grep -n "jitpack" android/build.gradle || true
+
+
 #########################################Linux command######################################### 
 
  
