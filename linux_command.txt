@@ -1,3 +1,5 @@
+caf5158061bd10e79c9f042abb62c86bc6f3e7a7
+
 echo "=== OS ==="
 lsb_release -a 2>/dev/null || cat /etc/os-release
 uname -m
