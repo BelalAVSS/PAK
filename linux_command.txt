@@ -42,6 +42,78 @@ grep -n "usb-serial-for-android" android/build.gradle || true
 grep -n "jitpack" android/build.gradle || true
 
 
+
+##########################################################################
+echo "=== OS ==="
+lsb_release -a 2>/dev/null || cat /etc/os-release
+uname -m
+
+echo
+echo "=== Qt ==="
+~/Qt/6.8.3/gcc_64/bin/qtpaths --qt-version 2>/dev/null || true
+~/Qt/6.8.3/android_arm64_v8a/bin/qt-cmake --version 2>/dev/null | head -n 1
+
+echo
+echo "=== CMake / Ninja ==="
+cmake --version | head -n 1
+~/Qt/Tools/CMake/bin/cmake --version | head -n 1
+ninja --version
+
+echo
+echo "=== Java ==="
+java -version
+javac -version
+
+echo
+echo "=== Android SDK / NDK ==="
+ls -1 ~/Android/Sdk/platforms 2>/dev/null | tail
+ls -1 ~/Android/Sdk/build-tools 2>/dev/null | tail
+grep -n "jitpack" android/build.gradle || true.gradle || truev/null || echo "No 
+=== OS ===
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.4 LTS
+Release:	24.04
+Codename:	noble
+x86_64
+
+=== Qt ===
+6.8.3
+cmake version 3.30.5
+
+=== CMake / Ninja ===
+cmake version 3.30.5
+cmake version 3.30.5
+1.11.1
+
+=== Java ===
+openjdk version "17.0.18" 2026-01-20
+OpenJDK Runtime Environment (build 17.0.18+8-Ubuntu-124.04.1)
+OpenJDK 64-Bit Server VM (build 17.0.18+8-Ubuntu-124.04.1, mixed mode, sharing)
+javac 17.0.18
+
+=== Android SDK / NDK ===
+android-35
+35.0.0
+26.1.10909125
+Android Debug Bridge version 1.0.41
+Version 36.0.2-14143358
+Installed as /home/avss/Android/Sdk/platform-tools/adb
+Running on Linux 6.17.0-14-generic (x86_64)
+
+=== QGC repo ===
+v5.0.8
+e0816c957602789200ae5ba0af45217f0f2f1db4
+31:    GIT_TAG caf5158061bd10e79c9f042abb62c86bc6f3e7a7
+
+=== usb-serial AAR hash ===
+No local AAR
+
+=== build.gradle usb serial lines ===
+30:    implementation 'com.github.mik3y:usb-serial-for-android:3.8.1'
+15:    maven { url = 'https://jitpack.io' }
+
+
+
 #########################################Linux command######################################### 
 
  
